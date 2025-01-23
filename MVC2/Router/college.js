@@ -6,4 +6,5 @@ router.get("/about",collegeConteroller.aboutPage);
 router.get("/contact",collegeConteroller.contactPage);
 router.get("/course",collegeConteroller.coursesPage);
 router.get("/faculty",collegeConteroller.facultyPage);  
+router.post("/save",collegeConteroller.sendPage)
 module.exports=router;

@@ -1,4 +1,4 @@
-// const collegeModel=require('../Model/College');
+const collegeModel=require('../model/CollegeModel');
 const homePage=(req,res)=>{
     res.render('home');
 }
@@ -14,10 +14,14 @@ const coursesPage=(req,res)=>{
 const facultyPage=(req,res)=>{
     res.render('faculty');
 }
+const sendPage=async(req,res)=>{
+    console.log("data")
+}
 module.exports={
     homePage,
     aboutPage,
     contactPage,            
     coursesPage,
-    facultyPage
+    facultyPage,
+    sendPage
 }

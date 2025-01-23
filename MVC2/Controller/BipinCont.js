@@ -1,3 +1,4 @@
+const collegeModel=require('../model/CollegeModel');
 const homepage=(req,res)=>{
     res.render("Bipin");
 }
