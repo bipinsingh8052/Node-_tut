@@ -11,6 +11,31 @@
     <a href="/students/display">display</a>|
     <hr size="9px" color="red">
     <h1>this is display page </h1>
+
+    <table border="1" >
+        <tr>
+            <th>name</th>
+            <th>rollno</th>
+            <th>city</th>
+            <th>fees</th>
+        </tr>
+    
+    <% 
+      alldata.forEach((key)=>{
+         %>
+        <tr>
+            <td><%= key.name %></td>
+            <td><%= key.rollno %></td>
+            <td><%= key.age %></td>
+            <td><%= key.course %></td>
+        </tr>
+        <%
+    })
+    %>
+
+
+    <!-- <%=alldata[0].name%> -->
+</table>
     <hr size="9px" color="red">
 </body>
 </html>

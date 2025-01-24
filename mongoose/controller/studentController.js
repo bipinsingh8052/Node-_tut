@@ -5,8 +5,9 @@ const homePage=(req,res)=>{
 const insertPage=(req,res)=>{
     res.render("insert");
 }
-const displayPage=(req,res)=>{
-    res.render("display");
+const displayPage=async (req,res)=>{
+    let data =await studentModel.find();
+    res.render("display",{alldata:data});
 
 }
 const savepage= async(req,res)=>{
