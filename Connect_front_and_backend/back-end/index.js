@@ -3,6 +3,8 @@ const app =express();
 const bodyParser =require("body-parser");
 const router= require("./Router/studentRouter");
 const mongoose =require("mongoose");
+const cors =require("cors")
+app.use(cors())
  mongoose.connect("mongodb://127.0.0.1:27017/firstDatabase")
  .then(()=>{
     console.log("this is connected");
@@ -17,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json
 app.use(bodyParser.json())
+
 
 
 
