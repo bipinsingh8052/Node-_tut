@@ -10,44 +10,44 @@ export default function Insert() {
       number:""
 
     })
-    const HandleInput=(e)=>{
-      let {name,value}=e.target;
-      setInputFrm({
-        ...inputFrm,
-        [name]:value
-      });
-      console.log(inputFrm)
-    }
+    // const HandleInput=(e)=>{
+    //   let {name,value}=e.target;
+    //   setInputFrm({
+    //     ...inputFrm,
+    //     [name]:value
+    //   });
+    //   console.log(inputFrm)
+    // }
 
-    const SubmitInput=()=>{
-      // console.log(inputFrm)
-      // let api ="http://localhost:8080/students/datasave"
-        // axios.post(api,input)
-        // .then((res)=>{
-        //     console.log(res.data)
-        // })
-        // .catch(()=>{
-        //     console.log("error");
-        // })
-    }
+    // const SubmitInput=()=>{
+    //   // console.log(inputFrm)
+    //   let api ="http://localhost:8080/students/insert"
+    //     axios.post(api,input)
+    //     .then((res)=>{
+    //         console.log(res.data)
+    //     })
+    //     .catch(()=>{
+    //         console.log("error");
+    //     })
+    // }
 
     const Hinput=(e)=>{
-        const {name}=e.target.name;
-        const value =e.target.value;
-        setinput(values=>({...values,
-            [name]:value
-        }))
+        const{name , value} = e.target
+       setinput({
+        ...input , 
+        [name] : value
+       })
         console.log(input)
     }
-    const Submit =()=>{
-        // let api ="http://localhost:8080/students/datasave"
-        // axios.post(api,input)
-        // .then((res)=>{
-        //     console.log(res.data)
-        // })
-        // .catch(()=>{
-        //     console.log("error");
-        // })
+    const SubmitHandler =()=>{
+        let api ="http://localhost:8080/students/datasave"
+        axios.post(api,input)
+        .then((res)=>{
+            console.log(res.data)
+        })
+        .catch(()=>{
+            console.log("error");
+        })
         console.log(input)
 
     }
@@ -56,7 +56,7 @@ export default function Insert() {
     <div>
       This is Insert page 
     </div>
-    Enter the Rollno: <input type="text" name="rollno" onChange={Hinput} />
+    Enter the Rollno: <input type="text"  name="rollno" onChange={Hinput} />
     <br />
     Enter the Name: <input type="text" name="name" onChange={Hinput} />
     <br />
@@ -64,7 +64,7 @@ export default function Insert() {
     <br />
     Enter the Number : <input type="tel" name="number" onChange={Hinput} />
     <br /><br />
-    <button onClick={Submit}>Submit</button>
+    <button onClick={SubmitHandler}>Submit</button>
 
 <br /><br /><br />
 <br /><br />
@@ -74,7 +74,7 @@ export default function Insert() {
 
 
 
-    Enter the Rollno: <input type="text" name="rollno" value={inputFrm.rollno} onChange={HandleInput} />
+    {/* Enter the Rollno: <input type="text" name="rollno" value={inputFrm.rollno} onChange={HandleInput} />
     <br />
     Enter the Name: <input type="text" name="name" onChange={HandleInput} value={inputFrm.name} />
     <br />
@@ -82,7 +82,7 @@ export default function Insert() {
     <br />
     Enter the Number : <input type="tel" name="number" onChange={HandleInput} value={inputFrm.number} />
     <br /><br />
-    <button onClick={SubmitInput}>Submit</button>
+    <button onClick={SubmitInput}>Submit</button> */}
 
     </>
     
