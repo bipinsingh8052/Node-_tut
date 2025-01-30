@@ -5,10 +5,11 @@ import BottomData from './BottomData'
 import { Link, Outlet } from 'react-router-dom'
 
 export default function Data() {
+  let data ="hello sir my name is data"
   return (
     <>
     <hr />
-    <TopData/>
+    <TopData clg="Rkdf univertsity" fees="2000" alldata={data}/>
     <MiddleData/>
     <BottomData/>
 
