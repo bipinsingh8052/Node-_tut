@@ -1,0 +1,19 @@
+.college{
+    background-color: azure;
+    color: red;
+    text-decoration: dashed;
+}
+.course {
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+}
+.app{
+    color: blueviolet;
+    text-decoration: line-through;
+}
+
+
+body{
+    background-color: burlywood;
+}
