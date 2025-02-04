@@ -1,7 +1,9 @@
 import { useState } from "react";
 import {message} from 'antd'
 import { Button } from 'antd';
+// import  useEffecti  from "../src/UseEffect";
 import From from "./From";
+import UseEffect from "../src/UseEffect";
 function App() {
   let [color,setColor]=useState("red")
   let [Con,setCon]=useState(0);
@@ -96,7 +98,8 @@ function App() {
 
      <br />
      <hr /><br /><hr />
-     <From/>
+     {/* <From/> */}
+     <UseEffect/>
     </>
   )
 }
