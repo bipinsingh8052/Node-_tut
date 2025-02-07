@@ -26,10 +26,11 @@ export default function USeContext({children}) {
     }
   return (
     <div>
-      <mydata.Provider>
+      <mydata.Provider value={{login,logout,user}}>
         {children}
       </mydata.Provider>
 
     </div>
   )
 }
+export {mydata}

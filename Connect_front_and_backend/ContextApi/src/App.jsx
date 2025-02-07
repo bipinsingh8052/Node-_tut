@@ -1,10 +1,13 @@
-import { createContext, useState } from "react"
+import { createContext, useContext, useState } from "react"
 import Comt1 from "./component/Comt1"
 import Children from "./pages/Children"
-
+import Auth from "./pages/Auth"
+import Unauth from "./pages/Unauth"
+import { mydata } from "./USeContext"
 let myContext =createContext()
 function App() {
   let[User,SetUser]=useState("Bipin")
+  let {user}=useContext(mydata);
 
   return (
     <>
@@ -23,7 +26,12 @@ function App() {
      <hr /><hr /><hr /><hr /><hr /><hr />
 
 
-     
+
+<h1>data in from :::::!!</h1>
+<br /><br /><br />
+     {
+      (user.aut)?<Unauth/>:<Auth/>
+     }
     </>
   )
 }
