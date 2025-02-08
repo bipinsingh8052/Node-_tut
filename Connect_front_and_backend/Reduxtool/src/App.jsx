@@ -20,34 +20,37 @@ const Changeit=()=>{
 
  myRef.current.style.backgroundColor="yellow"
 }
-const myreducer=(state,actions)=>{
-  switch(actions){
-    case "increment":
-      return state+1;
+// const myreducer=(state,actions)=>{
+//   switch(actions){
+//     case "increment":
+//       return state+1;
 
-    case "decrement":
-      return state-1; 
-    default:
-    return state.count  
-  }
-}
+//     case "decrement":
+//       return state-1; 
+//     default:
+//     return state.count  
+//   }
+// }
 const mybgcolor=(state,actions)=>{
   switch(actions){
     case "redcolor":
       return state="red";
       case "greencolor":
       return state="green";
-      case "redcolor":
-      return state="red";case "redcolor":
-      return state="red";case "redcolor":
-      return state="red";case "redcolor":
-      return state="red";
+      case "yellowcolor":
+      return state="yellow";
+      case "orangecolor":
+      return state="orange";
+      case "blackcolor":
+      return state="black";
+      default:
+      return state="pink";
   }
 }
 
 
 
-const [count,dispatch]=useReducer(myreducer,0)
+// const [count,dispatch]=useReducer(myreducer,0)
 const [bgcolor,dispatch] =useReducer(mybgcolor,"pink")
   return (
     <>
@@ -82,19 +85,19 @@ const [bgcolor,dispatch] =useReducer(mybgcolor,"pink")
 
 
 
-    <h1>Number in Rudcur{ count}</h1>
+    {/* <h1>Number in Rudcur{ count}</h1>
     <button onClick={()=>{dispatch("increment")}}>Increment</button>
     <button onClick={()=>{dispatch("decrement")}}>Decrement</button>
 
-    <div style={{width:"100%", height:"900px"}}></div>
+    <div style={{width:"100%", height:"900px"}}></div> */}
 
 
 
-    <button>Red</button>
-    <button>Green</button>
-    <button>Oragnge</button>
-    <button>black</button>
-    <button>yellow</button>
+    <button onClick={()=>{dispatch("redcolor")}}>Red</button>
+    <button  onClick={()=>{dispatch("greencolor")}}>Green</button>
+    <button onClick={()=>{dispatch("yellowcolor")}}>Oragnge</button>
+    <button onClick={()=>{dispatch("orangecolor")}}>black</button>
+    <button onClick={()=>{dispatch("blackcolor")}}>yellow</button>
     <div style={{border:"1px solid black", height:"200px", width:"200px", backgroundColor:bgcolor}}></div>
     </>
 
