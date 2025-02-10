@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useState } from "react"
+import Parent from "./Parent";
 
 
 function App() {
@@ -53,7 +54,8 @@ function App() {
 
 
 
-     
+     <br /><br /><br /><br /><br /><br /><br /><br />
+     <Parent/>
     </>
   )
 }
