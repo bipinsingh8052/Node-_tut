@@ -11,7 +11,7 @@ const ColorSlice= createSlice ({
             console.log(actions.payload)
             state.mycolor=actions.payload
         })
-    }
+    } 
 })
 
 
