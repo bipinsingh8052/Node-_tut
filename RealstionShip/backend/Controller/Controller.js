@@ -41,8 +41,43 @@ const display=async(req,res)=>{
    
 }
 
+const bookinsert=async(req,res)=>{
+    // console.log(req.body)
+    const{ name, price, id }=req.body;
+    try {
+        let book =await bookModel.create({
+            bookname:name,
+            bookPrice:price,
+            author_id:id
+        })
+
+        let authorData=await authorModel.findByIdAndUpdate(id ,{ $push:{Book_id:book._id}})
+        res.send({msg:"Insert the books"})
+    } catch (error) {
+        res.send({msg:"book is not submited"})
+        
+    }
+   
+}
+
+
+const alldataDispaly=async(req,res)=>{
+    console.log("okk");
+    try {
+        let data=await authorModel.find().populate("Book_id");
+        res.send(data);
+        
+    } catch (error) {
+        res.send("not a data")
+        
+    }
+   
+}
+
 
 module.exports={
     authorPage,
-    display
+    display,
+    bookinsert,
+    alldataDispaly
 }
