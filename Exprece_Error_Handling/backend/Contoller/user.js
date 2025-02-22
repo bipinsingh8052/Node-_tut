@@ -20,7 +20,7 @@ const userid=await user.create({
     lastname:lastname,
     Userid:signup._id
 })
-res.send("okk")
+res.send("okkk")
 
 }
 
