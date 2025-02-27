@@ -5,6 +5,7 @@ import Service from './compoment/Service'
 import About from './compoment/About'
 import Company from './compoment/Company'
 import Login from './compoment/Login'
+import Proctoted from './compoment/Proctoted'
 
 function App() {
   
@@ -15,11 +16,11 @@ function App() {
     <Routes>
       <Route path='/' element={<Layout/>}>
       <Route index element={<Home/>}/>
-      <Route path="/home" element={<Home/>}/>
-      <Route path='/service' element={<Service/>}/>
-      <Route path="/about" element={<About/>}/>
-      <Route path='/contact' element={<Company/>}/>
-      <Route path='/login' element={<Login/>}/>
+      <Route path="home" element={<Home/>}/>
+      <Route path='service' element={<Proctoted Component={Service} />}/>
+      <Route path="about" element={<Proctoted Component={About} />}/>
+      <Route path='contact' element={<Proctoted Component={Company} />}/>
+      <Route path='login' element={<Login/>}/>
       </Route>
     </Routes>
     </BrowserRouter>

@@ -6,8 +6,8 @@ const LoginSlice =createSlice({
         login:false
     },
     reducers:{
-        login:(state)=>{
-            state.login=true;
+        login:(state,actions)=>{
+            state.login=true
         },
         logOut:(state)=>{
             state.login=false
@@ -15,5 +15,5 @@ const LoginSlice =createSlice({
     }
 })
 
-export default LoginSlice.actions
-export const {login,logOut} =LoginSlice.reducer
+export default LoginSlice.reducer
+export const {login,logOut} =LoginSlice.actions
