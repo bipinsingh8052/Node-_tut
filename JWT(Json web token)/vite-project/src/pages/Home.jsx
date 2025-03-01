@@ -1,11 +1,21 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import axios from 'axios'
 export default function Home() {
     let nav=useNavigate();
 
 
-    const loading=()=>{
+    const loading=async()=>{
+
+      let token=localStorage.getItem("token")
+      console.log(token);
+      let api ="http://localhost:8010/student/authoration";
+      try {
+        let response =await axios.post(api,null,{headers: { "tokensid": token }})
+        console.log(response);
+      } catch (error) {
+        console.log(error);    
+      }
 
     }
 
