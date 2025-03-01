@@ -13,6 +13,8 @@ export default function Home() {
       try {
         let response =await axios.post(api,null,{headers: { "tokensid": token }})
         console.log(response);
+        localStorage.setItem("name",response.data.name)
+        nav("/dashboard")
       } catch (error) {
         console.log(error);    
       }

@@ -8,6 +8,7 @@ export default function SignUp() {
         let{name,value}=e.target;
         setinput(valuse=>({...valuse,[name]:value}))
     }
+    
     let nav=useNavigate();
     const SignUp=async()=>{
         console.log(input);
@@ -24,6 +25,7 @@ export default function SignUp() {
         }
 
     }
+
 
    
   return (

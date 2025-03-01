@@ -6,6 +6,8 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import Protected from './ProtoctedRoue/Protected'
 function App() {
   
 
@@ -20,7 +22,12 @@ function App() {
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/signup' element={<SignUp/>}/>
       <Route path='/login' element={<Login/>}/>
+     
       </Route>
+     </Routes>
+     <Routes>
+     <Route path='dashboard' element={<Dashboard/>}>
+     </Route>
      </Routes>
      </BrowserRouter>
     </>

@@ -16,10 +16,10 @@ export default function Login() {
         try {
             let response= await axios.post(api,{email:email,password:password});
             console.log(response);
-            const {token}=response.data;
+            const token=response.data.tokens;
             console.log(token);
             localStorage.setItem("token",token);
-            alert(response.data.msg)
+            // alert(response.data.msg)
 
             nav('/home')
         } catch (error) {
