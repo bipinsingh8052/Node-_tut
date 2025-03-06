@@ -44,7 +44,7 @@ export default function Display() {
                 {
                     data.map((e,index)=>{
                         return (
-                            <tr key={index}>
+                            <tr key={index} onClick={()=>{Clickit(e._id)}}>
                                 <td> <img src={`http://localhost:8090/${e.defaultimg}`} alt=""  style={{width:"100px", height:"100px"}} /></td>
                                 <td>{e.name}</td>
                                 <td>
@@ -52,7 +52,7 @@ export default function Display() {
                                 </td>
                                 <td>{e.price}</td>
                                 <td>{e.details}</td>
-                                <td><button onClick={()=>{Clickit(e._id)}}>Click it</button></td>
+                                <td><button >Click it</button></td>
                             </tr>
                         )
                     })
@@ -63,3 +63,4 @@ export default function Display() {
     </div>
   )
 }
+  
