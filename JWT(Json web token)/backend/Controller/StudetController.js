@@ -1,6 +1,6 @@
 const modelSignUp =require("../model/StudentModel")
 const bcrypt =require("bcrypt")
-const JWT=require("jsonwebtoken");
+const jwt=require("jsonwebtoken");
 const SignUpPage=async(req,res)=>{
     console.log(req.body);
     // 
@@ -34,11 +34,11 @@ const SignUpPage=async(req,res)=>{
 
 
 
-
+const check=null
 
 
 const LoginPage=async(req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     const { email, password }=req.body;
     try {
         let data =await modelSignUp.findOne({email:email});
@@ -51,19 +51,19 @@ const LoginPage=async(req,res)=>{
         // // encode the password
 
         let hasPassword = await bcrypt.compare(password,data.password);
-        // console.log(hasPassword);
+        console.log(hasPassword);
         if(!hasPassword){
-            return res.status(404).send({msg:"invalid password"})
+            return res.status(500).send({msg:"invalid password"})
         }
         // endcode the password
         
-        
 
-        const token =await JWT.sign(
-            {id:data._id},process.env.JWT,{ expiresIn: '1h' } )
-    // console.log(token)
-        res.status(200).send({msg:"login succfully","token":`${token}`});
-    } catch (error) {
+        const token =await jwt.sign({id:data._id},process.env.JWT,{ expiresIn: '1day' } )
+    console.log(token)
+
+        res.status(200).send({tokens:token});
+    }
+     catch (error) {
         res.status(400).send({msg:"Api Not Found"});
 
     }
@@ -72,7 +72,51 @@ const LoginPage=async(req,res)=>{
 
 
 
+
+
+
+
+
+
+const Authoreation=async(req,res)=>{
+    // console.log(req.header("tokensid"));
+
+    const token=req.header("tokensid");
+    try {
+        
+        
+
+        let searchData=null
+       
+        const vers=await jwt.verify(token,process.env.JWT,(error,auth)=>{
+            
+            if(auth){
+                console.log("match the token",auth)
+                searchData =auth.id;
+                
+                // res.status(200).send(auth)
+            }
+           
+        });
+        // console.log(searchData)
+            let data= await modelSignUp.findById(searchData).select("-password")
+            // console.log(data);
+    
+
+            res.status(200).send(data);
+       
+
+
+    } catch (error) {
+        res.status(500).send("not Found");
+        
+    }
+   
+
+}
+
 module.exports={
     SignUpPage,
-    LoginPage
+    LoginPage,
+    Authoreation
 }

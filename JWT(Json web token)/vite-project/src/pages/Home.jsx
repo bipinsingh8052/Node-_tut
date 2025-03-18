@@ -9,14 +9,18 @@ export default function Home() {
 
       let token=localStorage.getItem("token")
       console.log(token);
+     
       let api ="http://localhost:8010/student/authoration";
       try {
         let response =await axios.post(api,null,{headers: { "tokensid": token }})
         console.log(response);
         localStorage.setItem("name",response.data.name)
-        nav("/dashboard")
+       
       } catch (error) {
         console.log(error);    
+      }
+      if(token){
+        nav("/dashboard")
       }
 
     }
@@ -29,6 +33,7 @@ export default function Home() {
     
     useEffect(()=>{
         loading();
+        
     },[])
   return (
     <div>

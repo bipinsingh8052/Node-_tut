@@ -38,7 +38,6 @@ export default function Login() {
 <center>
     <div>
         <h1>Login Page</h1>
-
       <form onSubmit={submit} >
       <input type="email" placeholder='Enter the Email' name='email' value={email} onChange={(e)=>{setemail(e.target.value)}} />
       <br />
