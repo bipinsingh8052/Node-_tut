@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default function App() {
+export default function Navbar() {
   return (
     <div>
       
     </div>
   )
 }
-
