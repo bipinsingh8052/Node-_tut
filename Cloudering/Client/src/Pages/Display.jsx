@@ -10,6 +10,7 @@ export default function Display() {
         let api ="http://localhost:8000/student/display"
         try {
             let response =await axios.get(api);
+            console.log(response.data)
     setData(response.data)
 
             

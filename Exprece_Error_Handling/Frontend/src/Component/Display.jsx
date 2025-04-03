@@ -16,7 +16,7 @@ export default function Display() {
   useEffect(()=>{loading()},[])
   return (
     <div>
-      <table>
+      <table border="2px">
         <thead>
         <th>user name</th>
 

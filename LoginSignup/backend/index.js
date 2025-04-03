@@ -4,10 +4,11 @@ const mongoose =require("mongoose")
 const cors =require("cors")
 const bodyParser = require("body-parser")
 const Router=require("./Router/login")
+require("dotenv").config()
 app.use(cors())
 
 
-mongoose.connect("mongodb://localhost:27017/amit")
+mongoose.connect("mongodb://127.0.0.1:27017/amit")
 .then(()=>{console.log("DB connected SuccessFully")})
 .catch(()=>{console.log("NOt connected DB ")})
 
@@ -18,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
+let port =process.env.PORT || 8000
+console.log(port)
 
 
 
@@ -25,6 +28,6 @@ app.use(bodyParser.json())
 app.use("/info",Router)
 
 
-app.listen(8080,()=>{
-    console.log("http://localhost:8080")
+app.listen(port,()=>{
+    console.log(`http://localhost:${port}`)
 })
