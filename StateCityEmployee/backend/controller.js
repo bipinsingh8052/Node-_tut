@@ -66,11 +66,28 @@ const ShowAllData=async(req,res)=>{
 }
 
 
+
+const DeletePage =async(req,res)=>{
+    // console.log(req.body)
+    const{id}=req.body;
+    await namemodel.findByIdAndDelete(id);
+    res.send("okk")
+}
+
+const SearchEditPage=async(req,res)=>{
+    // console.log(req.body);
+    const{id}=req.body;
+    const finddata =await namemodel.findById(id).populate("stateinfo").populate("cityInfo");
+    res.send(finddata)
+}
+
 module.exports={
     stateInsert,
     ShowState,
     InsertCity,
     ShowCityname,
     EnterName,
-    ShowAllData
+    ShowAllData,
+    DeletePage,
+    SearchEditPage
 }
