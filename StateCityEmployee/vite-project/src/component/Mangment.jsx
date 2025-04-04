@@ -5,12 +5,12 @@ export default function Mangment() {
     let[data,setData]=useState([]);
     let[status,setstatus]=useState(false);
     let[editinput,seteditInput]=useState({});
+
+    let[reload,setReload]=useState(false);
     let [state,setstate]=useState("");
     let[city,setcity]=useState("")
-    let[storeAllCity,setStoreAllCity]=useState([]);
-    let[storeState,setStoreState]=useState([]);
-    let[storeStateInEdit,setStoreStateInEdit]=useState("");
-    let[storeCityInEdit,setStoreCityInEdit]=useState("");
+    // let []
+    
     let[editDatainfo,setEditDatainfo]=useState({});
     let loading=async()=>{
         let api="http://localhost:9000/user/ShowAllData";
@@ -26,6 +26,7 @@ export default function Mangment() {
         let response =await axios.post(api,{id:id});
         alert("Delete it your ")
         console.log(id)
+        setReload(true)
     }
 
 
@@ -37,35 +38,58 @@ export default function Mangment() {
         seteditInput(response.data)
         setstate(response.data.stateinfo.state)
         setcity(response.data.cityInfo.city)
+       
     }
-    const loadState=async()=>{
-   let api="http://localhost:9000/user/showstate";
-        let response =await axios.get(api);
-        console.log(response.data);
-        setStoreState(response.data);
-    }
+//     const loadState=async()=>{
+//    let api="http://localhost:9000/user/showstate";
+//         let response =await axios.get(api);
+//         console.log(response.data);
+//         setStoreState(response.data);
+//     }
     const HandleEdit=(e)=>{
         let {name,value}=e.target;
-        setEditDatainfo({...editDatainfo,[name]:value})
-        // console.log(e.target.value)
+        if (name === "state") {
+            setstate(value);  
+        } else if (name === "city") {
+            setcity(value);  
+        } else {
+            seteditInput((prev) => ({ ...prev, [name]: value }));
+        }
     }
+    const HandleState=(e)=>{
+        let {name,value}=e.target;
+        setstate(values=>({...values,[name]:value}))
+        // console.log(e.target.value)
+        console.log(editDatainfo)
+    }
+
+    const SendTheEditData=async()=>{
+        let api ="http://localhost:9000/user/editit ";
+        let response =await axios.post(api,{stateedit:state,cityedit:city,id:editinput._id,name:editinput.name})
+        console.log(response.data);
+        alert("update id Successfully completed")
+        setReload(true)
+        setstatus(false)
+    }
+
 
 
     useEffect(()=>{
         loading()
-        loadState()
+        setReload(false)
+        // loadState()
 
-    },[])
-    const findCity=async()=>{
-        if(!storeStateInEdit)return;
-        let api="http://localhost:9000/user/showcity";
-        let response =await axios.post(api,{state:storeStateInEdit});
-        console.log(response.data);
-        setStoreAllCity(response.data)
-    }
-    useEffect(()=>{
-        findCity()
-    },[storeStateInEdit])
+    },[reload])
+    // const findCity=async()=>{
+    //     if(!storeStateInEdit)return;
+    //     let api="http://localhost:9000/user/showcity";
+    //     let response =await axios.post(api,{state:state});
+    //     console.log(response.data);
+    //     setcity(response.data)
+    // }
+    // useEffect(()=>{
+    //     findCity()
+    // },[state])
     
     return(
      <>
@@ -105,24 +129,9 @@ export default function Mangment() {
             <p>Enter the name: <input type='text' name='name' value={editinput.name} onChange={HandleEdit} /></p>
             {state}
             {city}
-            <p>select the state :<select value={state} onChange={(e)=>{setStoreStateInEdit(e.target.value)}} >
-                {
-                    storeState.map((e,index)=>{return(
-                        <option value={e._id} key={index}>{e.state}</option>
-                    )})
-                }
-                
-                </select>
-                </p>
-            <p>Select the city : <select value={city} onChange={(e)=>{setStoreCityInEdit(e.target.value)}}>
-                {
-                    storeAllCity.map((e,index)=>{return(
-                        <option value={e._id} key={index}>{e.city}</option>
-                    )})
-                }
-                </select></p>
-
-            <button>Submit it</button>
+            <p>Enter the State : <input type='text' value={state} name='state' onChange={HandleEdit}/></p>
+            <p>Enter the State : <input type='text' value={city} name='city' onChange={HandleEdit}/></p>
+            <button onClick={SendTheEditData}>Submit it</button>
         </div>:" "
       }
     </div></>

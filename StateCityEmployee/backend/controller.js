@@ -2,6 +2,7 @@
 const statemodel =require("./model/state")
 const CityModel =require("./model/city")
 const namemodel=require("./model/employee");
+const state = require("./model/state");
 const stateInsert=async(req,res)=>{
     // console.log(req.body)
     const{state}=req.body;
@@ -80,6 +81,43 @@ const SearchEditPage=async(req,res)=>{
     const finddata =await namemodel.findById(id).populate("stateinfo").populate("cityInfo");
     res.send(finddata)
 }
+const EditData=async(req,res)=>{
+    console.log(req.body);
+    const{
+        stateedit,
+        cityedit,
+        id,
+        name,
+       
+      }=req.body;
+   
+   let update=await namemodel.findByIdAndUpdate({_id:id},{name:name});
+   let CreateState=null;
+   let CreateCity=null;
+
+      let finDState =await statemodel.findOne({state:stateedit});
+      let findCity =await CityModel.findOne({city:cityedit})
+      if(!finDState){
+        CreateState= await statemodel.create({
+            state:stateedit
+        })
+      }
+      if(!findCity){
+        CreateCity= await CityModel.create({
+            city:cityedit,
+        })
+        // await CityModel.findByIdAndUpdate(data._id,{ $push: { stateId:s} })
+
+      }
+      
+
+    // let FindName =await namemodel.findById(id)
+    //   console.log(FindName);
+
+
+   res.send("okk")
+   
+}
 
 module.exports={
     stateInsert,
@@ -89,5 +127,6 @@ module.exports={
     EnterName,
     ShowAllData,
     DeletePage,
-    SearchEditPage
+    SearchEditPage,
+    EditData
 }

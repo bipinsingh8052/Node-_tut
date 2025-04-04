@@ -11,4 +11,5 @@ route.post("/name",Contr.EnterName);
 route.get("/ShowAllData",Contr.ShowAllData);
 route.post("/delete",Contr.DeletePage)
 route.post("/editSearch",Contr.SearchEditPage)
+route.post("/editit",Contr.EditData)
 module.exports=route;
