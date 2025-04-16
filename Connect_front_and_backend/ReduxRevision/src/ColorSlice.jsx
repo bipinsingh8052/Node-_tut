@@ -20,4 +20,4 @@ export default ColorSlice.reducer;
 
 
 
-this is mornaugey acefgeybchjbhjcbhcbchbv
+// this is mornaugey acefgeybchjbhjcbhcbchbv
