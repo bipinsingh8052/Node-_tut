@@ -17,3 +17,7 @@ const ColorSlice= createSlice ({
 
 export const {mycolorChange} = ColorSlice.actions;
 export default ColorSlice.reducer;
+
+
+
+this is mornaugey acefgeybchjbhjcbhcbchbv
